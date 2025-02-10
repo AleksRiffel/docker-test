@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  service1:
+    build: ./service1
+    environment:
+      SERVICE_NAME: "Service 1"
+      SERVICE_VERSION: "1.0"
+      RELATED_SERVICES: "http://service2:8000, http://service3:8000"
+    ports:
+      - "8001:8000"
+
+  service2:
+    build: ./service2
+    environment:
+      SERVICE_NAME: "Service 2"
+      SERVICE_VERSION: "1.0"
+    ports:
+      - "8002:8000"
+
+  service3:
+    build: ./service3
+    environment:
+      SERVICE_NAME: "Service 3"
+      SERVICE_VERSION: "1.0"
+      RELATED_SERVICES: "http://service4:8000"
+    ports:
+      - "8003:8000"
+
+  service4:
+    build: ./service4
+    environment:
+      SERVICE_NAME: "Service 4"
+      SERVICE_VERSION: "1.0"
+    ports:
+      - "8004:8000"
